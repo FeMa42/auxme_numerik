@@ -13,5 +13,13 @@ https://julialang.org/learning/
 https://en.wikibooks.org/wiki/Introducing_Julia 
 https://en.wikibooks.org/wiki/Introducing_Julia/Arrays_and_tuples 
 
+## Installation
+
+Ihr könnt Julia über den Terminal wie folgt installieren: 
+```
+curl -fsSL https://install.julialang.org | sh
+```
+
+https://github.com/FeMa42/auxme_numerik.git
 
 
