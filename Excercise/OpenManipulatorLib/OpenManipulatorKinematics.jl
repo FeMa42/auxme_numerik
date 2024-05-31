@@ -1,5 +1,5 @@
 # OpenManipulatorKineamtics.jl
-module OpenManipulatorKineamtics
+module OpenManipulatorKinematics
 using Rotations
 
 export RotationMatrix, get_tranformation_matrix, forward_kinematics, forward_kinematics_rpy, complete_forward_kinematics
@@ -61,4 +61,4 @@ function complete_forward_kinematics(q)
     orientation = forward_kinematics_rpy(T0E)
     return [position, orientation]
 end
-end # module
+end # module OpenManipulatorKinematics
