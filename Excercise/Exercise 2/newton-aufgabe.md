@@ -43,6 +43,7 @@ Ihr Code sollte:
 - Die gefundene Näherung für die Nullstelle und die Anzahl der benötigten Iterationen zurückgeben
 
 Implementiert die Funktion `newton` und testet diese mit den oben definierten Funktionen.
+Beim Testen könnt ihr `tol = 0.0001` für die Toleranz verwenden.
 
 ### Teil 2: Automatische Differentiation 
 Erweitern Eure Implementierung, um die manuelle Eingabe der Ableitung überflüssig zu machen. Verwenden Sie dazu das Package `TaylorSeries` in Julia, um die Ableitung automatisch zu berechnen.
@@ -61,14 +62,14 @@ Wir können mit dem Package `TaylorSeries` die Ableitung berechnen. Hier ein Bei
 using TaylorSeries
 func = x -> sin(x)
 x = 1.0
-TS = Taylor1(Float64, 1)
-dfunc = func(TS)
-ts = myFunc.(x)
+TS = Taylor1(Float64, 1)   # Taylor-Polynom 1. Grades um x_0=0
+dfunc = func(TS)           # Ableitung des Taylor-Polynoms 
+df_x = dfunc.(x)           # Auswertung der Ableitung an x
 ````
 Hier wird dann das Taylorpolynom an der Stelle $x_0=0$ berechnet. Wir können das Polynom auch an einer anderen Stelle auswerten. Hierfür können wir taylor_expand nutzen. 
 
 ````julia
-func_t = taylor_expand(func, a, order=1)
+func_t = taylor_expand(func, a, order=1)  # Taylor-Polynom um x_0=a
 ````
 
 Mithilfe von differentiate können wir die Ableitung berechnen. 
@@ -89,11 +90,15 @@ dfunc_t = differentiate(func_t)
 2. Visualisiert die Funktionen und die Iterationsschritte des Newton-Verfahrens.
    - Die Funktion selbst
    - Die Iterationsschritte des Newton-Verfahrens
+   
+    _**Hinweis**_: 
+    
+    _Ändert hierfür eure `newton_auto` Funktion so ab, dass die x-Werte der Iterationsschritte mitausgegeben werden._
 
 3. Untersucht das Konvergenzverhalten:
    - Wie hängt die Anzahl der benötigten Iterationen vom Startwert ab?
    - Gibt es Startwerte, bei denen das Verfahren nicht konvergiert?
-   - Vergleichen Sie die Effizienz mit dem Bisektionsverfahren
+   - Vergleichen Sie die Effizienz mit dem Bisektionsverfahren (z.B. über die Anzahl der Iterationen)
 
 ## Beispiel: Bisektion
 Als Referenz hier eine Implementation des Bisektionsverfahrens:
