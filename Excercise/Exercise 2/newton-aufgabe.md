@@ -6,7 +6,7 @@ Das Newton-Verfahren ist ein fundamentales numerisches Verfahren zur Bestimmung 
 ## Abgabeformat
 - Ein Julia-Notebook (.ipynb) mit eurem Code, Tests und Visualisierungen
 - Dokumentiert eure Implementierung und Ergebnisse
-- Meldet euch wenn ihr die Aufgabe gelöst habt bei mir
+- Meldet euch wenn ihr die Aufgabe gelöst habt bei mir 
 
 ## Aufgabenstellung
 
@@ -81,9 +81,9 @@ dfunc_t = differentiate(func_t)
 ### Teil 3: Analyse und Tests
 
 1. Testen Eure Implementierung an folgenden Funktionen:
-   - f₁(x) = x² - 4.5          (Nullstellen in der nähe von x = ±2)
-   - f₂(x) = sin(x) + 0.5x     (Nullstellen in der nähe von x = π)
-   - f₃(x) = exp(x) - 2.5      (Nullstelle in der nähe von x = ln(2))
+   - f₁(x) = x² - 4            (Nullstellen bei x = ±2)
+   - f₂(x) = sin(x)            (Nullstellen bei x = 0, ±π, ±2π, ...)
+   - f₃(x) = exp(x) - 2        (Nullstelle bei x = ln(2))
    - f₄(x) = x³ - 2x² + x - 3  (Mehrere Nullstellen mit unterschiedlichem Konvergenzverhalten)
    - f₅(x) = -26 + 85x - 91x² + 44x³ - 8x⁴ + x⁵ (komplexere Funktion)
 
