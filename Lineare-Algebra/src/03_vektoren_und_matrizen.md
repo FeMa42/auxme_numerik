@@ -3,7 +3,7 @@
 
 ## 1. Vektoren
 ### 1.1 Definition und Darstellung
-Ein Vektor ist ein mathematisches Objekt, das sowohl eine Richtung als auch eine Länge (oder Magnitude) hat. Im Kontext der Linearen Algebra stellen wir Vektoren oft als geordnete Liste von Zahlen dar, die Komponenten genannt werden. Ein Vektor im dreidimensionalen Raum \mathbb{R}^3 kann beispielsweise geschrieben werden als:
+Ein Vektor ist ein mathematisches Objekt, das sowohl eine Richtung als auch eine Länge (oder Magnitude) hat. Im Kontext der Linearen Algebra stellen wir Vektoren oft als geordnete Liste von Zahlen dar, die Komponenten genannt werden. Ein Vektor im dreidimensionalen Raum $\mathbb{R}^3$ kann beispielsweise geschrieben werden als:
 
 $$v = \begin{bmatrix} v_1 \\ v_2 \\ v_3 \end{bmatrix}$$
 
@@ -126,8 +126,8 @@ Rechenregeln für Matrizen:
 Ein System von $m$ linearen Gleichungen mit $n$ Unbekannten kann kompakt als Matrixgleichung $Ax = b$ geschrieben werden.
 
 Beispiel: Das Gleichungssystem
-$$ 2x - y = 0 \\
--x + 2y = 3 $$
+$$ 2x - y = 0 $$
+$$ -x + 2y = 3 $$
 
 kann geschrieben werden als:
 $$ \begin{bmatrix} 2 & -1 \\ -1 & 2 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} 0 \\ 3 \end{bmatrix} $$
@@ -170,7 +170,7 @@ und wird auch zweireihige Determinante genannt. Für größere Matrizen ist die 
 $$ \text{det}(A) = \sum_{j=1}^{n} (-1)^{i+j} a_{ij} \text{det}(A_{ij}) $$
 wobei $A_{ij}$ die Matrix ist, die entsteht, wenn die $i$-te Zeile und die $j$-te Spalte von $A$ entfernt werden. 
 
-**Beispiel:**\ 
+**Beispiel:**\
 Für die $3 \times 3$ Matrix: 
 
 $$ A = \begin{bmatrix} 2 & 3 & 5 \\ 0 & 4 & 1 \\ 1 & -2 & 0 \end{bmatrix} $$
@@ -179,10 +179,10 @@ $$ \text{det}(A) = 2 \cdot \text{det} \begin{bmatrix} 4 & 1 \\ -2 & 0 \end{bmatr
 
 Alernativ kann man die Determinante durch Entwicklung nach der zweiten Zeile berechnen:
 
-$$ \text{det}(A) = (-1) \cdot 0 \cdot \text{det} \begin{bmatrix} 3 & 5 \\ -2 & 0 \end{bmatrix} + 4 \cdot \text{det} \begin{bmatrix} 2 & 5 \\ 1 & 0 \end{bmatrix} + (-1) \cdot (-1) \cdot \text{det} \begin{bmatrix} 2 & 3 \\ 1 & -2 \end{bmatrix} \\
-= 4 \cdot (-5) + 1 \cdot (-7) = -27$$
+$$ \text{det}(A) = (-1) \cdot 0 \cdot \text{det} \begin{bmatrix} 3 & 5 \\ -2 & 0 \end{bmatrix} + 4 \cdot \text{det} \begin{bmatrix} 2 & 5 \\ 1 & 0 \end{bmatrix} + (-1) \cdot (1) \cdot \text{det} \begin{bmatrix} 2 & 3 \\ 1 & -2 \end{bmatrix} \\
+= 4 \cdot (-5) + (-1) \cdot (-7) = -13$$
 
-**Eigenschaften:**\
+**Eigenschaften:**\\
 Der Wert einer Determinante ändert sich nicht, wenn wir die Zeilen oder Spalten vertauschen: 
 $$ \text{det}(A) = \text{det}(A^T) $$
 Allerdings ändert sich das Vorzeichen der Determinante, wenn wir eine Zeile oder Spalte mit einer anderen vertauschen. Wenn wir eine Zeile oder Spalte mit einem Skalar multiplizieren, wird die Determinante ebenfalls mit diesem Skalar multipliziert. Wenn wir eine Zeile oder Spalte addieren, bleibt die Determinante unverändert.
@@ -193,28 +193,38 @@ Ist die Matrix $A$ invertierbar, gilt auch:
 $$ \text{det}(A^{-1}) = \frac{1}{\text{det}(A)} $$
 
 **Rang einer Matrix**
+
 - Für eine $m \times n$ Matrix $A$ bezeichnet man die Menge aller Lösungen des linearen Gleichungssystems $Ax = 0$ als Kern oder Nullraum von $A$. 
+
 - Die Menge der Vektoren $Ax$, $x \in \mathbb{R}^n$ wird als wird als Spaltenraum von $A$ bezeichnet.
+
 - Die maximale Anzahl linear unabhängiger Spalten von $A$ heißt Spaltenrang von $A$.
+
 - Die maximale Anzahl linear unabhängiger Zeilen von $A$ heißt Zeilenrang von $A$.
+
 - Der Rang einer Matrix ist die Dimension des Spaltenraums und ist gleich der Dimension des Zeilenraums. Der Rang einer Matrix ist immer kleiner oder gleich der Anzahl der Zeilen oder Spalten der Matrix. 
+
 $$ \text{Rang}(A) = \text{Spaltenrang}(A) = \text{Zeilenrang}(A) \leq \min(m,n) $$
 - Elementare Zeilen- und Spaltenoperationen ändern den Rang der Matrix nicht. 
 
-**Lösbarkeit von linearen Gleichungssystemen:** \
+**Lösbarkeit von linearen Gleichungssystemen:** \\
 Das lineare Gleichungssystem $Ax = b$ hat genau dann eine Lösung, wenn der Rang der Matrix $A$ gleich dem Rang der erweiterten Matrix $[A|b]$ ist:
 $$ \text{Rang}(A) = \text{Rang}([A|b]) $$
 
 - Wenn der Rang von $A$ gleich der Anzahl der Unbekannten ist, hat das System genau eine Lösung.
+
 - Für quadratische Matrizen ist das System genau dann lösbar, wenn die Determinante der Matrix ungleich Null ist.
 
 ### 2.8 Matrixnormen
 Die Norm einer Matrix ist ein Maß für die Größe oder den Betrag der Matrix. Es gibt verschiedene Arten von Matrixnormen, die in der linearen Algebra verwendet werden. Hier sind einige gängige Matrixnormen:
+
 - **Frobeniusnorm:** Die Frobeniusnorm einer Matrix $A$ ist definiert als die Quadratwurzel der Summe der Quadrate aller Elemente der Matrix:
 $$ \|A\|_F = \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n} |a_{ij}|^2} $$
+
 - **1-Norm:** Die 1-Norm einer Matrix $A$ ist definiert als die maximale absolute Spaltensumme:
 $$ \|A\|_1 = \max_{1 \leq j \leq n} \sum_{i=1}^{m} |a_{ij}| $$
-- **∞-Norm:** Die ∞-Norm einer Matrix $A$ ist definiert als die maximale absolute Zeilensumme:
+
+- **$\infty$-Norm:** Die $\infty$-Norm einer Matrix $A$ ist definiert als die maximale absolute Zeilensumme:
 $$ \|A\|_\infty = \max_{1 \leq i \leq m} \sum_{j=1}^{n} |a_{ij}| $$
 Die Norm einer Matrix ist nützlich, um die Stabilität und Konvergenz von Algorithmen in der linearen Algebra zu analysieren. Sie kann auch verwendet werden, um den Abstand zwischen Matrizen zu messen und die Sensitivität von Lösungen gegenüber Änderungen in den Eingabewerten zu bewerten.
 
