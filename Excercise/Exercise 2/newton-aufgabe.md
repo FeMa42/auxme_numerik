@@ -1,12 +1,14 @@
 # Programmieraufgabe: Implementierung des Newton-Verfahrens
 
 ## Einführung
+
 Das Newton-Verfahren ist ein fundamentales numerisches Verfahren zur Bestimmung von Nullstellen nichtlinearer Funktionen. Im Gegensatz zum einfacheren Bisektionsverfahren konvergiert das Newton-Verfahren bei geeigneten Voraussetzungen quadratisch, was es besonders effizient macht.
 
 ## Abgabeformat
+
 - Ein Julia-Notebook (.ipynb) mit eurem Code, Tests und Visualisierungen
 - Dokumentiert eure Implementierung und Ergebnisse
-- Meldet euch wenn ihr die Aufgabe gelöst habt bei mir 
+- Meldet euch wenn ihr die Aufgabe gelöst habt bei mir
 
 ## Aufgabenstellung
 
@@ -16,6 +18,7 @@ $$f(x) = -26 + 85 * x - 91 * x^2 + 44 * x^3 - 8 * x^4 + x^5$$
 $$f'(x) = 85 - 182 * x + 132 * x^2 - 32 * x^3 + 5 * x^4$$
 
 ### Teil 1: Grundlegende Implementierung
+
 Implementieren Sie das Newton-Verfahren in Julia. Eure Funktion sollte folgendermaßen aussehen:
 
 ```julia
@@ -37,6 +40,7 @@ Die Iteration des Newton-Verfahrens folgt der Formel:
 $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
 
 Ihr Code sollte:
+
 - Die Iteration gemäß der Newton-Formel durchführen
 - Abbrechen, wenn |f(x)| < tol erreicht ist
 - Abbrechen, wenn die maximale Iterationszahl erreicht ist
@@ -45,7 +49,8 @@ Ihr Code sollte:
 Implementiert die Funktion `newton` und testet diese mit den oben definierten Funktionen.
 Beim Testen könnt ihr `tol = 0.0001` für die Toleranz verwenden.
 
-### Teil 2: Automatische Differentiation 
+### Teil 2: Automatische Differentiation
+
 Erweitern Eure Implementierung, um die manuelle Eingabe der Ableitung überflüssig zu machen. Verwenden Sie dazu das Package `TaylorSeries` in Julia, um die Ableitung automatisch zu berechnen.
 
 ```julia
@@ -57,7 +62,8 @@ end
 
 #### Hilfestellung
 
-Wir können mit dem Package `TaylorSeries` die Ableitung berechnen. Hier ein Beispielaufruf. 
+Wir können mit dem Package `TaylorSeries` die Ableitung berechnen. Hier ein Beispielaufruf.
+
 ````julia
 using TaylorSeries
 func = x -> sin(x)
@@ -66,13 +72,14 @@ TS = Taylor1(Float64, 1)   # Taylor-Polynom 1. Grades um x_0=0
 dfunc = func(TS)           # Ableitung des Taylor-Polynoms 
 df_x = dfunc.(x)           # Auswertung der Ableitung an x
 ````
-Hier wird dann das Taylorpolynom an der Stelle $x_0=0$ berechnet. Wir können das Polynom auch an einer anderen Stelle auswerten. Hierfür können wir taylor_expand nutzen. 
+
+Hier wird dann das Taylorpolynom an der Stelle $x_0=0$ berechnet. Wir können das Polynom auch an einer anderen Stelle auswerten. Hierfür können wir taylor_expand nutzen.
 
 ````julia
 func_t = taylor_expand(func, a, order=1)  # Taylor-Polynom um x_0=a
 ````
 
-Mithilfe von differentiate können wir die Ableitung berechnen. 
+Mithilfe von differentiate können wir die Ableitung berechnen.
 
 ````julia
 dfunc_t = differentiate(func_t)
@@ -87,13 +94,25 @@ dfunc_t = differentiate(func_t)
    - f₄(x) = x³ - 2x² + x - 3  (Mehrere Nullstellen mit unterschiedlichem Konvergenzverhalten)
    - f₅(x) = -26 + 85x - 91x² + 44x³ - 8x⁴ + x⁵ (komplexere Funktion)
 
-2. Visualisiert die Funktionen und die Iterationsschritte des Newton-Verfahrens.
+2. Visualisiert die Funktionen und die dazugehörigen Iterationsschritte des Newton-Verfahrens in jeweils einem Plot. In jedem Plot soll folgendes zu sehen sein:
    - Die Funktion selbst
    - Die Iterationsschritte des Newton-Verfahrens
-   
-    _**Hinweis**_: 
-    
-    _Ändert hierfür eure `newton_auto` Funktion so ab, dass die x-Werte der Iterationsschritte mitausgegeben werden._
+
+    _**Hinweis**_:
+
+    _Ändert hierfür eure `newton_auto` Funktion so ab, dass die x-Werte der Iterationsschritte ebenfalls zurückgegeben werden.
+    In Julia ist es nämlich möglich mehrere Werte gleichzeitig zurückzugeben:_
+
+    ```julia
+    # Beispielfunktion
+    function func()
+        # ...
+        return x, y
+    end
+
+    # Beispielzuweisung
+    x, y = func()
+    ```
 
 3. Untersucht das Konvergenzverhalten:
    - Wie hängt die Anzahl der benötigten Iterationen vom Startwert ab?
@@ -101,6 +120,7 @@ dfunc_t = differentiate(func_t)
    - Vergleichen Sie die Effizienz mit dem Bisektionsverfahren (z.B. über die Anzahl der Iterationen)
 
 ## Beispiel: Bisektion
+
 Als Referenz hier eine Implementation des Bisektionsverfahrens:
 
 ```julia
