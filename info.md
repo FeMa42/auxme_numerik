@@ -17,4 +17,3 @@ git clone https://github.com/FeMa42/auxme_numerik.git
 - Jupyter-Extension installieren: `Jupyter` suchen und installieren
 - Ordner Öffnen: auxme_numerik
 - Julia oben rechts im Notebook auswählen 
-
